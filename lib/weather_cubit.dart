@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/dto/hourly_forecast.dart';
 import 'package:weather/weather_repo.dart';
-import 'package:weather/weather_item.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
   final WeatherRepo _weatherRepo = WeatherRepo();
@@ -9,14 +9,14 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   void fetchWeather() async {
     emit(WeatherState(isLoading: true));
-    List<WeatherItem> weathers = await _weatherRepo.fetchWeather();
+    final HourlyForecast weathers = await _weatherRepo.fetchWeather();
     emit(WeatherState(weathers: weathers));
   }
 }
 
 class WeatherState {
-  final List<WeatherItem> weathers;
+  final HourlyForecast? weathers;
   final bool isLoading;
 
-  WeatherState({this.isLoading = false, this.weathers = const []});
+  WeatherState({this.isLoading = false, this.weathers});
 }

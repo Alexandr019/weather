@@ -10,4 +10,10 @@ class HourlyForecast {
     required this.location,
     required this.hourTempList,
   });
+
+  factory HourlyForecast.fromJson(Map<String, dynamic> json) => HourlyForecast(
+        currentTemp: json['current']['temp'],
+        location: json['timezone'],
+        hourTempList: HourTemp.fromJsonList(json['hourly']),
+      );
 }
