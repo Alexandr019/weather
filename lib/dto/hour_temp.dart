@@ -6,7 +6,7 @@ class HourTemp {
 
   factory HourTemp.fromJson(Map<String, dynamic> json) => HourTemp(
         time: DateTime.fromMillisecondsSinceEpoch(json['dt'] * 1000),
-        temp: json['temp'],
+        temp: json['temp'].toDouble(),
       );
 
   static List<HourTemp> fromJsonList(List<dynamic> jsonList) {
