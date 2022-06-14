@@ -61,13 +61,13 @@ class _MyAppState extends State<MyApp> {
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 80, bottom: 10),
+                              top: 120, bottom: 10),
                           child: Text(
                             state.weathers!.currentTemp.round().toString()+'℃',
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 78.0,
-                              fontWeight: FontWeight.w300,
+                              fontSize: 100.0,
+                              fontWeight: FontWeight.w400,
                               letterSpacing: 1,
                             ),
                           ),
@@ -87,7 +87,7 @@ class _MyAppState extends State<MyApp> {
                             itemCount: state.weathers!.hourTempList.length,
                             itemBuilder: (BuildContext context, int index) {
                               return Container(
-                                margin: const EdgeInsets.only(top:120.0, left: 20.0,right: 20.0, bottom: 120.0),
+                                margin: const EdgeInsets.only(top:90.0, left: 10.0,right: 10.0, bottom: 90.0),
                                 decoration: BoxDecoration(
                                     color: const Color(0xff266FB6).withOpacity(0.5),
                                     borderRadius: const BorderRadius.all(Radius.circular(15)),
@@ -95,7 +95,19 @@ class _MyAppState extends State<MyApp> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Padding(padding: const EdgeInsets.only(top:45, left: 8, right: 8),
+                                    Padding(padding: const EdgeInsets.only(top:10, left: 8, right: 8),
+                                      child: Text(
+                                        DateFormat('EE').format(state
+                                            .weathers!.hourTempList[index].time),
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 28.0,
+                                          fontWeight: FontWeight.w400,
+                                          letterSpacing: 1,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(padding: const EdgeInsets.only(top:30, left: 15, right: 15),
                                     child: Text(
                                       DateFormat('HH:mm').format(state
                                           .weathers!.hourTempList[index].time),
@@ -107,7 +119,7 @@ class _MyAppState extends State<MyApp> {
                                       ),
                                     ),
                                     ),
-                                    Padding(padding: const EdgeInsets.only(top: 5),
+                                    Padding(padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       state.weathers!.hourTempList[index].temp.round().toString()+'℃',
                                       style: const TextStyle(
@@ -118,26 +130,39 @@ class _MyAppState extends State<MyApp> {
                                       ),
                                     ),
                                     ),
+                                    Padding(padding: const EdgeInsets.only(top:25, left: 8, right: 8),
+                                      child: Text(
+                                        state.weathers!.hourTempList[index].windSpeed.toString()+'km/h',
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w400,
+                                          letterSpacing: 1,
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               );
                             },
                           ),
                         ),
-                        Padding(padding: const EdgeInsets.only(bottom: 120),
+                        Padding(padding: const EdgeInsets.only(bottom: 50),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               primary: const Color(0xff266FB6),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15))
+                                    borderRadius: BorderRadius.circular(30))
                             ),
-                              child: const Text('7-DAY FORECAST',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.w400,
-                                letterSpacing: 1,
-                              ),),
+                              child: const Padding(padding: EdgeInsets.only(top: 10, bottom: 10, left: 50, right: 50),
+                                child: Text('7-DAY FORECAST',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24.0,
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 1,
+                                  ),),
+                              ),
                               onPressed: () {
                                 Navigator.push(
                                     context,

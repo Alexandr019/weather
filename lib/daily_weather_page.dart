@@ -70,7 +70,7 @@ class _MyAppState extends State<Second> {
                   : Column(
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(top: 70, bottom: 10),
+                          padding: const EdgeInsets.only(top: 100, bottom: 10),
                           child: Text(
                             state.dailyweathers!.currentTemp
                                     .round()
@@ -78,8 +78,8 @@ class _MyAppState extends State<Second> {
                                 '℃',
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 78.0,
-                              fontWeight: FontWeight.w300,
+                              fontSize: 100.0,
+                              fontWeight: FontWeight.w400,
                               letterSpacing: 1,
                             ),
                           ),
@@ -103,7 +103,7 @@ class _MyAppState extends State<Second> {
                             itemBuilder: (BuildContext context, int index) {
                               return Container(
                                 margin: const EdgeInsets.only(
-                                    top: 25, left: 20, right: 20),
+                                    top: 20, left: 20, right: 20),
                                 decoration: BoxDecoration(
                                   color:
                                       const Color(0xff266FB6).withOpacity(0.5),
