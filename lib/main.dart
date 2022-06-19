@@ -53,121 +53,129 @@ class _MyAppState extends State<MyApp> {
                 body: state.isLoading
                     ? const Center(child: CircularProgressIndicator())
                     : Container(
-                        child: Column(
+                        child: ListView(
+                          physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                           children: <Widget>[
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 120, bottom: 10),
+                            Center(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 120, bottom: 10),
+                                child: Text(
+                                  state.weathers!.currentTemp.round().toString() +
+                                      '℃',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 100.0,
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 1,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Center(
                               child: Text(
-                                state.weathers!.currentTemp.round().toString() +
-                                    '℃',
+                                state.weathers!.location,
                                 style: const TextStyle(
                                   color: Colors.white,
-                                  fontSize: 100.0,
-                                  fontWeight: FontWeight.w400,
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.w300,
                                   letterSpacing: 1,
                                 ),
                               ),
                             ),
-                            Text(
-                              state.weathers!.location,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.w300,
-                                letterSpacing: 1,
-                              ),
-                            ),
-                            Expanded(
+                            SizedBox(
+                              height: 400,
                               child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: state.weathers!.hourTempList.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Container(
-                                    margin: const EdgeInsets.only(
-                                        top: 90.0,
-                                        left: 10.0,
-                                        right: 10.0,
-                                        bottom: 90.0),
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xff66A6E3)
-                                          .withOpacity(0.4),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(15)),
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 10, left: 8, right: 8),
-                                          child: Text(
-                                            DateFormat('EE').format(state
-                                                .weathers!
-                                                .hourTempList[index]
-                                                .time),
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 28.0,
-                                              fontWeight: FontWeight.w400,
-                                              letterSpacing: 1,
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: state.weathers!.hourTempList.length,
+                                  itemBuilder: (BuildContext context, int index) {
+                                    return Container(
+                                      margin: const EdgeInsets.only(
+                                          top: 90.0,
+                                          left: 10.0,
+                                          right: 10.0,
+                                          bottom: 90.0),
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xff66A6E3)
+                                            .withOpacity(0.4),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(15)),
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 10, left: 8, right: 8),
+                                            child: Text(
+                                              DateFormat('EE').format(state
+                                                  .weathers!
+                                                  .hourTempList[index]
+                                                  .time),
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 28.0,
+                                                fontWeight: FontWeight.w400,
+                                                letterSpacing: 1,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 30, left: 15, right: 15),
-                                          child: Text(
-                                            DateFormat('HH:mm').format(state
-                                                .weathers!
-                                                .hourTempList[index]
-                                                .time),
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 28.0,
-                                              fontWeight: FontWeight.w400,
-                                              letterSpacing: 1,
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 30, left: 15, right: 15),
+                                            child: Text(
+                                              DateFormat('HH:mm').format(state
+                                                  .weathers!
+                                                  .hourTempList[index]
+                                                  .time),
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 28.0,
+                                                fontWeight: FontWeight.w400,
+                                                letterSpacing: 1,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 10),
-                                          child: Text(
-                                            state.weathers!.hourTempList[index]
-                                                    .temp
-                                                    .round()
-                                                    .toString() +
-                                                '℃',
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 28.0,
-                                              fontWeight: FontWeight.w400,
-                                              letterSpacing: 1,
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 10),
+                                            child: Text(
+                                              state.weathers!.hourTempList[index]
+                                                      .temp
+                                                      .round()
+                                                      .toString() +
+                                                  '℃',
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 28.0,
+                                                fontWeight: FontWeight.w400,
+                                                letterSpacing: 1,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 25, left: 8, right: 8),
-                                          child: Text(
-                                            state.weathers!.hourTempList[index]
-                                                    .windSpeed
-                                                    .toString() +
-                                                'km/h',
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w400,
-                                              letterSpacing: 1,
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 25, left: 8, right: 8),
+                                            child: Text(
+                                              state.weathers!.hourTempList[index]
+                                                      .windSpeed
+                                                      .toString() +
+                                                  'km/h',
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w400,
+                                                letterSpacing: 1,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
                             ),
+
                             Padding(
                               padding: const EdgeInsets.only(bottom: 50),
                               child: ElevatedButton(
@@ -179,7 +187,10 @@ class _MyAppState extends State<MyApp> {
                                               BorderRadius.circular(30))),
                                   child: const Padding(
                                     padding: EdgeInsets.only(
-                                        top: 10, bottom: 10, left: 50, right: 50),
+                                        top: 10,
+                                        bottom: 10,
+                                        left: 50,
+                                        right: 50),
                                     child: Text(
                                       '7-DAY FORECAST',
                                       style: TextStyle(
