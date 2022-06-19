@@ -1,8 +1,6 @@
 import 'package:location/location.dart';
 
-
-class LocationService{
-
+class LocationService {
   late String latitude;
   late String longitude;
 
@@ -16,7 +14,8 @@ class LocationService{
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
       if (!_serviceEnabled) {
-        return LocationData.fromMap({'latitude': 50.450001, 'longitude': 30.523333});
+        return LocationData.fromMap(
+            {'latitude': 50.450001, 'longitude': 30.523333});
       }
     }
 
@@ -24,7 +23,8 @@ class LocationService{
     if (_permissionGranted == PermissionStatus.denied) {
       _permissionGranted = await location.requestPermission();
       if (_permissionGranted != PermissionStatus.granted) {
-        return LocationData.fromMap({'latitude': 50.450001, 'longitude': 30.523333});
+        return LocationData.fromMap(
+            {'latitude': 50.450001, 'longitude': 30.523333});
       }
     }
 

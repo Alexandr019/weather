@@ -4,7 +4,6 @@ import 'package:weather/dto/daily_forecast.dart';
 import 'package:weather/dto/hourly_forecast.dart';
 import 'package:weather/services/location_service.dart';
 
-
 class WeatherRepo {
   Future<HourlyForecast> fetchWeather() async {
     final LocationData locationData = await LocationService.getLocation();
@@ -15,6 +14,7 @@ class WeatherRepo {
 
     return HourlyForecast.fromJson(data);
   }
+
   Future<DailyForecast> fetchDailyWeather() async {
     final LocationData locationData = await LocationService.getLocation();
     final json = await Dio().get(
