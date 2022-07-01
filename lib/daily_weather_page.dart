@@ -100,9 +100,7 @@ class _MyAppState extends State<Second> {
                             ),
                             Expanded(
                               child: ListView.builder(
-                                // scrollDirection: Axis.horizontal,
-                                itemCount:
-                                    state.dailyweathers!.dayTempList.length,
+                                itemCount: state.dailyweathers!.dayTempList.length,
                                 itemBuilder: (BuildContext context, int index) {
                                   return Container(
                                     margin: const EdgeInsets.only(

@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
                             Center(
                               child: Padding(
                                 padding:
-                                    const EdgeInsets.only(top: 120, bottom: 10),
+                                    const EdgeInsets.only(top: 100, bottom: 10),
                                 child: Text(
                                   state.weathers!.currentTemp.round().toString() +
                                       '℃',

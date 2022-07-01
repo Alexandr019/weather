@@ -5,10 +5,21 @@ import 'package:weather/dto/hourly_forecast.dart';
 import 'package:weather/services/location_service.dart';
 
 class WeatherRepo {
+  static const String baseUrl = 'https://api.openweathermap.org/data/2.5';
+  static const String _onecallEndpoint = '/onecall';
+
   Future<HourlyForecast> fetchWeather() async {
     final LocationData locationData = await LocationService.getLocation();
     final json = await Dio().get(
-        'https://api.openweathermap.org/data/2.5/onecall?lat=${locationData.latitude}&lon=${locationData.longitude}&exclude=minutely,alerts&units=metric&appid=ae838f7817f1909899a9bc98b741eb36');
+      baseUrl + _onecallEndpoint,
+      queryParameters: {
+        'lat': locationData.latitude,
+        'lon': locationData.longitude,
+        'exclude': 'minutely,alerts',
+        'units': 'metric',
+        'appid': 'ae838f7817f1909899a9bc98b741eb36',
+      },
+    );
 
     final data = json.data;
 
@@ -18,7 +29,15 @@ class WeatherRepo {
   Future<DailyForecast> fetchDailyWeather() async {
     final LocationData locationData = await LocationService.getLocation();
     final json = await Dio().get(
-        'https://api.openweathermap.org/data/2.5/onecall?lat=${locationData.latitude}&lon=${locationData.longitude}&exclude=minutely,alerts&units=metric&appid=ae838f7817f1909899a9bc98b741eb36');
+      baseUrl + _onecallEndpoint,
+      queryParameters: {
+        'lat': locationData.latitude,
+        'lon': locationData.longitude,
+        'exclude': 'minutely,alerts',
+        'units': 'metric',
+        'appid': 'ae838f7817f1909899a9bc98b741eb36',
+      },
+    );
 
     final data = json.data;
 
